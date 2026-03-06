@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stowplex LLC</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="brand">STOWPLEX</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <h1 class="hero-title fade-up">Empowering the <span class="gradient-text">Future</span> of Knowledge.
+                </h1>
+                <p class="hero-subtitle fade-up" style="transition-delay: 0.15s;">Stowplex LLC is engineering the next
+                    generation of personal knowledge management.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Stowplex LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Micro-animations script
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach((el) => {
+            if (el.classList.contains('feature-card')) {
+                const index = Array.from(el.parentElement.children).indexOf(el);
+                el.style.transitionDelay = `${index * 0.1}s`;
+            }
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
